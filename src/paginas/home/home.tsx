@@ -1,18 +1,19 @@
-import React from "react";
-import './home.css'
 
-interface minhaProps {
-    titulo: string;
-    descricao: string;
-}
 
-function Home(props: minhaProps){
+
+
+const Home = () => {
     return (
         <>
-        <h2>{props.titulo}</h2>
-        <p>{props.descricao}</p>
+        <div className="bg-indigo-900 flex justify-center">
+          <div className='container grid grid-cols-2 text-white'>
+            <div className="flex flex-col gap-4 items-center justify-center py-4">
+              <h2 className='text-5xl font-bold'>Qual quadra você procura?</h2>
+            </div>
+          </div>
+        </div>
         </>
-    );
+    )
 }
 
-export default Home;
+export default Home
