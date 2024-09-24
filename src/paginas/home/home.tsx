@@ -16,8 +16,8 @@ const Home = () => {
             <img src={mapa} alt="" className='w-2/3 ml-12'/>
             <div className='ml-48'>
               <input type="text" placeholder='Digite a quadra' className='bg-white rounded-full p-1 text-black' />
-              <div>
-                <button className='w-1/2'>Buscar</button>
+              <div className='flex justify-center mt-4 bg-white rounded-full'>
+                <button className='flex justify-center'>Buscar</button>
               </div>
             </div>
         </div>
