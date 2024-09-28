@@ -1,7 +1,7 @@
 <h1>Documentação do Sistema web de Gereciamento de Quadras com QR Codes</h1>
 <ul>
   <li>
-    <p> Back-End do sistema web de Gerenciamento de Quadras<img src="https://skillicons.dev/icons?i=typescript,react,vite" width="70" alt="Logos do frontend"/></img></p>
+    <p> Back-End do sistema web de Gerenciamento de Quadras<img src="https://skillicons.dev/icons?i=typescript,react,vite" width="100" alt="Logos do frontend"/></img></p>
   </li>
   <li>
     <p> O Front-End vai ser feito em React!
