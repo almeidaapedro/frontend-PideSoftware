@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+<h1>Documentação do Sistema web de Gereciamento de Quadras com QR Codes</h1>
+<ul>
+  <li>
+    <p> Back-End do sistema web de Gerenciamento de Quadras<img src="https://typescript.com/img/logo-small.svg" width="50" alt="Nest Logo" /><img src="https://skillicons.dev/icons?i=typescript,react,vite" width="50" alt="TypeScript Logo"/></img></p>
+  </li>
+  <li>
+    <p> O Front-End vai ser feito em React!
+  </li>
+</ul>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descrição
+Um sistema web inovador projetado para facilitar o gerenciamento e a utilização de quadras esportivas na sua região. Utilizando QR codes e a API do Google Maps, nosso sistema permite que os usuários registrem e monitorem a utilização das quadras de maneira prática e eficiente.
 
-Currently, two official plugins are available:
+Com esse sistema, administradores podem facilmente acompanhar o status de cada quadra, enquanto os usuários podem verificar a disponibilidade e registrar seu uso simplesmente escaneando um QR code com seus dispositivos móveis.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Instaladas
 
-## Expanding the ESLint configuration
+<ul>
+  <li>FrontEnd: React - Framework do JavaScript para construção de aplicações escaláveis e eficientes.</li>
+</ul>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Funcionalidades
 
-- Configure the top-level `parserOptions` property like this:
+<ul>
+  <li>Registro e Monitoramento de Quadras: Registre a utilização das quadras esportivas escaneando QR codes exclusivos.</li>
+</ul>
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Instalação
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Pré-requisitos
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- Yarn
+- Vite
+- NPM
