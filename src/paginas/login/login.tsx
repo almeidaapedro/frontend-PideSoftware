@@ -1,4 +1,3 @@
-import React from 'react'
 import { Link, useNavigate } from '../../../node_modules/react-router-dom/dist/index'
 
 
