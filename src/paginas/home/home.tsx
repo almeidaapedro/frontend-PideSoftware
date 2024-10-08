@@ -2,14 +2,14 @@
 import mapa from "../../assets/mapa-home.jfif"
 
 
-const Home = () => {
+function Home () {
     return (
         <>
         <div className="fundo-tela">
             <div className="flex justify-center">
               <div className='container grid grid-cols-2 text-white'>
                 <div className="flex flex-col gap-4 items-center justify-center py-4 mt-8">
-                  <h2 className='text-5xl font-bold ml-12'>Qual quadra você procura?</h2>
+                  <h2 className='text-6xl font-bold ml-16'>Qual quadra você procura?</h2>
                 </div>
               </div>
             </div>
@@ -22,6 +22,7 @@ const Home = () => {
                   </div>
                 </div>
             </div>
+            <div className="bg-rgb(6,10,31) text-transparent">aaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
           </div>
         </>
     )
