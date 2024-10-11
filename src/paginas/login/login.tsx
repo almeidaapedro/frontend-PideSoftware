@@ -34,8 +34,12 @@ function Login() {
 
     const login = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await handleLogin(usuarioLogin);
-      };
+        try {
+            handleLogin(usuarioLogin);
+        } catch (error) {
+            setErrorMessage("Credenciais inválidas. Por favor, tente novamente.");
+        }
+    };
 
     return (
         <>

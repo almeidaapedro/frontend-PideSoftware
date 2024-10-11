@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import axios from 'axios';
+import api from '../services/service';
 
 interface Usuario {
   token: string;
@@ -32,14 +33,13 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setError(null);
 
     try {
-      const response = await axios.post('https://backend-pidesoftware.onrender.com/api/auth/login', usuarioLogin, {
-        withCredentials: true, // Se precisar enviar cookies
+      const response = await api.post('/auth/login', {
+        withCredentials: true, 
       });
 
       if (response.data && response.data.token) {
         const userData: Usuario = {
           token: response.data.token,
-          // Adicione outras propriedades do usuário aqui, se necessário
         };
         setUsuario(userData);
         localStorage.setItem('token', response.data.token);
