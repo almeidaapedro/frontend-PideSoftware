@@ -13,8 +13,8 @@ function Navbar() {
                 </div>
 
                 <div className='flex gap-5 font-bold justify-center m-auto'>
-                    <Link to='/' className='hover:underline'>Início</Link>
-                    <Link to='/' className='hover:underline'>Contato</Link>
+                    <Link to='/home' className='hover:underline'>Início</Link>
+                    <Link to='/contato' className='hover:underline'>Contato</Link>
                 </div>
                 <div className=''>
                     <button className='hover:underline bg-white text-black rounded-full w-28 p-2 mr-4'><Link to='/login'>Login</Link></button>

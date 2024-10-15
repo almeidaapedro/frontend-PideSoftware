@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Route, Routes } from '../node_modules/react-router-dom/dist/index'
 import './App.css'
+import Contato from './components/contato/contato'
 import Footer from './components/footer/footer'
 import Navbar from './components/navbar/navbar'
 import { AuthProvider } from './contexts/authContext'
@@ -24,6 +25,7 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/home' element={<Home />} />
             <Route path='/cadastro' element={<Cadastro />} />
+            <Route path="/contato" element={<Contato />} />
           </Routes>
           </div>
           <Footer />
