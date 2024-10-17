@@ -33,7 +33,7 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setError(null);
 
     try {
-      const response = await api.post('/auth/login', {
+      const response = await api.post('/api/auth/login', {
         withCredentials: true, 
       });
 

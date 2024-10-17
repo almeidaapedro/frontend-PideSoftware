@@ -38,7 +38,7 @@ const pessoas: pessoa[] = [
   {
     foto: "",
     nome: "Lucas Reis",
-    email: "mailto:",
+    email: "mailto: lucasreis1601@gmail.com",
     linkedIn: "https://www.linkedin.com/in/lucas-reis-59b20a253/",
     github: "",
   },
