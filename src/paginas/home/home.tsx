@@ -1,4 +1,3 @@
-import React from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 function Home() {
@@ -38,9 +37,9 @@ function Home() {
             <input
               type="text"
               placeholder="Digite a quadra"
-              className="bg-white rounded-full p-1 border-2 border-custom-dark-blue text-black"
+              className="bg-white rounded-full p-1 border-2 border-custom-dark-blue text-black text-center"
             />
-            <div className="flex justify-center mt-4 bg-white rounded-full border-2 border-custom-dark-blue cursor-pointer">
+            <div className="flex justify-center align-items mt-4 bg-white rounded-full border-2 border-custom-dark-blue cursor-pointer w-24">
               <button className="flex justify-center p-1 hover:underline">Buscar</button>
             </div>
           </div>
