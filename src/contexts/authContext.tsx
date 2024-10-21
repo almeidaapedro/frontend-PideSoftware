@@ -10,7 +10,7 @@ interface Usuario {
 }
 
 interface UsuarioLogin {
-  email: string;
+  email: string; // Corrigido: deve ser 'email' em vez de 'usuario'
   senha: string;
 }
 
@@ -33,7 +33,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setError(null);
 
     try {
-      const response = await api.post('/api/auth/login', {
+      // Passar usuarioLogin no corpo da requisição
+      const response = await api.post('/auth/login', usuarioLogin, {
         withCredentials: true, 
       });
 
