@@ -1,16 +1,12 @@
-// AuthContext.tsx
-
 import React, { createContext, useContext, useState, ReactNode } from 'react';
-import axios from 'axios';
 import api from '../services/service';
 
 interface Usuario {
   token: string;
-  // Adicione outras propriedades do usuário conforme necessário
 }
 
 interface UsuarioLogin {
-  email: string; // Corrigido: deve ser 'email' em vez de 'usuario'
+  email: string;
   senha: string;
 }
 
@@ -33,8 +29,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setError(null);
 
     try {
-      // Passar usuarioLogin no corpo da requisição
-      const response = await api.post('/auth/login', usuarioLogin, {
+      // Atualizado para a nova URL do endpoint
+      const response = await api.post('/usuarios/logar', usuarioLogin, {
         withCredentials: true, 
       });
 
