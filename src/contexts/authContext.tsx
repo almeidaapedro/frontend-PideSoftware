@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import api from '../services/service';
+import { AxiosError } from 'axios';
 
 interface Usuario {
   token: string;
@@ -29,10 +30,8 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     setError(null);
 
     try {
-      // Atualizado para a nova URL do endpoint
-      const response = await api.post('/usuarios/logar', usuarioLogin, {
-        withCredentials: true, 
-      });
+      console.log("Tentando fazer login...", usuarioLogin);
+      const response = await api.post('/usuarios/logar', usuarioLogin); 
 
       if (response.data && response.data.token) {
         const userData: Usuario = {
@@ -40,18 +39,14 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
         };
         setUsuario(userData);
         localStorage.setItem('token', response.data.token);
+        console.log("Login bem-sucedido!", userData);
       } else {
         setError('Resposta inválida do servidor.');
       }
-    } catch (err: any) {
-      console.error('Erro ao fazer login:', err);
-      if (err.response && err.response.data && err.response.data.message) {
-        setError(err.response.data.message);
-      } else {
-        setError('Erro desconhecido durante o login.');
-      }
-    } finally {
-      setIsLoading(false);
+    } catch (err) {
+      const error = err as AxiosError;
+      console.error('Erro ao fazer login:', error);
+      setError(error.response?.data?.message || 'Erro desconhecido.');
     }
   };
 

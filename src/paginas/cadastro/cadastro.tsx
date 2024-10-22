@@ -13,10 +13,7 @@ function Cadastro() {
     email: '',
     senha: '',
   });
-
-  useEffect(() => {
-    // Removi o código relacionado ao usuarioResposta, pois não estava sendo utilizado corretamente
-  }, []);
+  const [mensagemSucesso, setMensagemSucesso] = useState<string | null>(null); // Novo estado para a mensagem de sucesso
 
   function back() {
     navigate('/login');
@@ -38,20 +35,16 @@ function Cadastro() {
 
     if (confirmaSenha === usuario.senha && usuario.senha.length >= 8) {
       try {
-        const token = localStorage.getItem('token'); // Adicione aqui a lógica para obter o token
-
         const response = await axios.post(
           'https://sportmap.onrender.com/usuarios/cadastrar',
-          usuario,
-          {
-            headers: {
-              Authorization: `Bearer ${token}` // Adicionando o token de autenticação
-            }
-          }
+          usuario
         );
 
         console.log('Usuário cadastrado com sucesso:', response.data);
-        back(); // Redireciona após o cadastro bem-sucedido
+        alert('Usuário cadastrado com sucesso!'); // Define a mensagem de sucesso
+        setTimeout(() => {
+          back(); // Redireciona após 2 segundos
+        }, 2000);
       } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
         alert('Erro ao cadastrar usuário. Verifique os dados e tente novamente.');
@@ -69,6 +62,7 @@ function Cadastro() {
         <div className="fundoCadastro hidden lg:block"></div>
         <form className='flex justify-center items-center flex-col w-2/3 gap-3' onSubmit={cadastrarNovoUsuario}>
           <h2 className='text-black text-5xl'>Cadastrar</h2>
+          {mensagemSucesso && <p className="text-green-500">{mensagemSucesso}</p>} {/* Exibe a mensagem de sucesso */}
           <div className="flex flex-col w-full">
             <label htmlFor="nome">Nome</label>
             <input
