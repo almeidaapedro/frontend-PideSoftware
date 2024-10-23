@@ -1,52 +1,34 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState } from 'react';
 import api from '../services/service';
-import { AxiosError } from 'axios';
+import UsuarioLogin from '../models/usuarioLogin';
 
-interface Usuario {
-  token: string;
+const AuthContext = createContext();
+
+export function useAuth() {
+  return useContext(AuthContext);
 }
 
-interface UsuarioLogin {
-  email: string;
-  senha: string;
-}
-
-interface AuthContextType {
-  usuario: Usuario | null;
-  handleLogin: (usuarioLogin: UsuarioLogin) => Promise<void>;
-  isLoading: boolean;
-  error: string | null;
-}
-
-const AuthContext = createContext<AuthContextType | undefined>(undefined);
-
-const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [usuario, setUsuario] = useState<Usuario | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [error, setError] = useState<string | null>(null);
+export function AuthProvider({ children }) {
+  const [usuario, setUsuario] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleLogin = async (usuarioLogin: UsuarioLogin) => {
     setIsLoading(true);
     setError(null);
+    console.log("Credenciais do usuário:", usuarioLogin); // Verifica as credenciais
 
     try {
-      console.log("Tentando fazer login...", usuarioLogin);
-      const response = await api.post('/usuarios/logar', usuarioLogin); 
-
-      if (response.data && response.data.token) {
-        const userData: Usuario = {
-          token: response.data.token,
-        };
-        setUsuario(userData);
-        localStorage.setItem('token', response.data.token);
-        console.log("Login bem-sucedido!", userData);
-      } else {
-        setError('Resposta inválida do servidor.');
-      }
+      const response = await api.post('/usuarios/logar', usuarioLogin, {
+        headers: { 'Content-Type': 'application/json' } // Adiciona cabeçalho
+      });
+      setUsuario(response.data);
+      localStorage.setItem('token', response.data.token);  // Salvar o token localmente
     } catch (err) {
-      const error = err as AxiosError;
-      console.error('Erro ao fazer login:', error);
-      setError(error.response?.data?.message || 'Erro desconhecido.');
+      console.error("Erro ao fazer login:", err); // Loga o erro completo
+      setError(err.response?.data?.message || 'Erro ao realizar o login.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,14 +37,4 @@ const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
-
-const useAuth = (): AuthContextType => {
-  const context = useContext(AuthContext);
-  if (!context) {
-    throw new Error('useAuth deve ser usado dentro de um AuthProvider');
-  }
-  return context;
-};
-
-export { AuthProvider, useAuth };
+}

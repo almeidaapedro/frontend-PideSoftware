@@ -9,11 +9,8 @@ function Login() {
   const navigate = useNavigate();
   const { usuario, handleLogin, isLoading, error } = useAuth();
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
-    id: 0,
-    nome: '',
     email: '',
     senha: '',
-    token: '',
   });
   const [isError, setIsError] = useState(false);
 
@@ -34,11 +31,12 @@ function Login() {
   const login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsError(false); 
+    console.log(usuarioLogin)
 
     try {
       await handleLogin(usuarioLogin);
     } catch (error) {
-      setIsError(true);
+      console.log(error.response)
     }
   };
 

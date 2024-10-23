@@ -2,7 +2,10 @@ import axios from "../../node_modules/axios/index"
 
 
 const api = axios.create({
-    baseURL: 'https://sportmap.onrender.com'
+    baseURL: 'https://sportmap.onrender.com',
+    headers: {
+        'Content-Type': 'application/json',
+    },
 })
 
 export const consultar = async (url: string, setDados: Function) => {
