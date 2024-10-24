@@ -1,5 +1,5 @@
-.fundo-tela{
-    background-image: url(./assets/imagem-tela-principal.jfif);
+.fundo-home{
+    background-image: url(./assets/fundo-tela-homeee.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
