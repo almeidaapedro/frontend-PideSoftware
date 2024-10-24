@@ -22,7 +22,7 @@ function Home() {
     const request = {
       query: searchTerm,
       location: mapCenter,
-      radius: '1000', 
+      radius: '1000',
     };
 
     service.textSearch(request, (results, status) => {
