@@ -15,14 +15,14 @@ type pessoa = {
 
 const pessoas: pessoa[] = [
   {
-    foto: "",
+    foto: "https://ik.imagekit.io/u1yytyqy3/Pedro.jpg?updatedAt=1729866103465",
     nome: "Pedro Almeida",
     email: "mailto: almeida.pedroaugusto25@gmail.com",
     linkedIn: "https://www.linkedin.com/in/pedroaugustosantosalmeida/",
     github: "https://github.com/almeidaapedro",
   },
   {
-    foto: "",
+    foto: "https://ik.imagekit.io/u1yytyqy3/diego-foto.png?updatedAt=1729866211874",
     nome: "Diego Rodrigues",
     email: "mailto: dr3540001@gmail.com",
     linkedIn: "https://www.linkedin.com/in/diego-rodrigues-374456310/",
@@ -36,7 +36,7 @@ const pessoas: pessoa[] = [
     github: "https://github.com/dcn99",
   },
   {
-    foto: "",
+    foto: "https://ik.imagekit.io/u1yytyqy3/WhatsApp%20Image%202024-10-25%20at%2011.02.09.jpeg?updatedAt=1729865401879",
     nome: "Lucas Reis",
     email: "mailto: lucasreis1601@gmail.com",
     linkedIn: "https://www.linkedin.com/in/lucas-reis-59b20a253/",

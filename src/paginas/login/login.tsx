@@ -75,13 +75,13 @@ function Login() {
           {isLoading ? (
             <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
           ) : (
-            <Link to={'/home'}><span>Entrar</span></Link>
+            <Link to={'/'}><span>Entrar</span></Link>
           )}
         </button>
         <hr className="border-slate-800 w-full" />
         <p>
           Ainda não tem uma conta?{' '}
-          <Link to="/cadastro" className="text-indigo-800 hover:underline">Cadastre-se</Link>
+          <Link to="/cadastro" className="text-indigo-800 hover:underline flex justify-center">Cadastre-se</Link>
         </p>
       </form>
       <div className="fundoLogin hidden lg:block"></div>
