@@ -51,7 +51,7 @@ function Login() {
             id="usuario"
             name="email"
             placeholder="E-mail"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 border-slate-700 rounded-full p-2"
             value={usuarioLogin.email}
             onChange={atualizarEstado}
             required
@@ -64,14 +64,14 @@ function Login() {
             id="senha"
             name="senha"
             placeholder="Senha"
-            className="border-2 border-slate-700 rounded p-2"
+            className="border-2 border-slate-700 rounded-full p-2"
             value={usuarioLogin.senha}
             onChange={atualizarEstado}
             required
           />
         </div>
         {isError && <p className="text-red-500">{error}</p>} {/* Exibe a mensagem de erro */}
-        <button type='submit' className="rounded bg-indigo-400 hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
+        <button type='submit' className="rounded bg-custom-dark-blue hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
           {isLoading ? (
             <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
           ) : (
