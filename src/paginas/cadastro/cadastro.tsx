@@ -60,7 +60,7 @@ function Cadastro() {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-2 place-items-center font-bold">
         <div className="fundoCadastro hidden lg:block"></div>
-        <form className='flex justify-center place-items-center flex-col w-2/3 gap-3 mt-6' onSubmit={cadastrarNovoUsuario}>
+        <form className='flex justify-center place-items-center flex-col w-2/3 gap-3 mt-12' onSubmit={cadastrarNovoUsuario}>
           <h2 className='text-black text-5xl'>Cadastrar</h2>
           {mensagemSucesso && <p className="text-green-500">{mensagemSucesso}</p>} {/* Exibe a mensagem de sucesso */}
           <div className="flex flex-col w-full">
