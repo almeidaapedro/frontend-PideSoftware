@@ -30,13 +30,14 @@ function Login() {
 
   const login = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsError(false); 
-    console.log(usuarioLogin)
+    setIsError(false);
+    console.log(usuarioLogin);
 
     try {
       await handleLogin(usuarioLogin);
     } catch (error) {
-      console.log(error.response)
+      console.log(error);
+      setIsError(true);
     }
   };
 
@@ -70,12 +71,12 @@ function Login() {
             required
           />
         </div>
-        {isError && <p className="text-red-500">{error}</p>} {/* Exibe a mensagem de erro */}
-        <button type='submit' className="rounded bg-custom-dark-blue hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
+        {isError && <p className="text-red-500">{String(error)}</p>}
+        <button type="submit" className="rounded bg-custom-dark-blue hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
           {isLoading ? (
             <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
           ) : (
-            <Link to={'/'}><span>Entrar</span></Link>
+            <span>Entrar</span>
           )}
         </button>
         <hr className="border-slate-800 w-full" />

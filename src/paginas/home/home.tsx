@@ -1,6 +1,14 @@
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 
+type Quadra = {
+  lat: number;
+  lng: number;
+  name: string;
+  address: string;
+  isAvailable: boolean;
+};
+
 function Home() {
   const mapContainerStyle = {
     width: '100%',
@@ -15,9 +23,9 @@ function Home() {
 
   const [searchTerm, setSearchTerm] = useState('');
   const [mapCenter, setMapCenter] = useState(center);
-  const [markers, setMarkers] = useState([]);
-  const [quadras, setQuadras] = useState([]); 
-  const [ocupadas, setOcupadas] = useState([]); 
+  const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
+  const [quadras, setQuadras] = useState<Quadra[]>([]); 
+  const [ocupadas, setOcupadas] = useState<string[]>([]); 
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyAXTst__t08nB_p-NVmKsjSd-yIXh2Z33Y',
@@ -47,7 +55,7 @@ function Home() {
 
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        const foundPlaces = results.map((place) => ({
+        const foundPlaces: Quadra[] = results.map((place) => ({
           lat: place.geometry.location.lat(),
           lng: place.geometry.location.lng(),
           name: place.name,
@@ -55,7 +63,9 @@ function Home() {
           isAvailable: Math.random() > 0.5,
         }));
 
-        const quadrasOcupadas = foundPlaces.filter(quadra => quadra.name.includes('Quadra Ocupada')).map(quadra => quadra.name);
+        const quadrasOcupadas = foundPlaces
+          .filter(quadra => quadra.name.includes('Quadra Ocupada'))
+          .map(quadra => quadra.name);
         setOcupadas(quadrasOcupadas);
 
         setMarkers(foundPlaces.map((place) => ({ lat: place.lat, lng: place.lng })));
@@ -67,7 +77,7 @@ function Home() {
     });
   };
 
-  const handleReserve = (quadra) => {
+  const handleReserve = (quadra: Quadra) => {
     if (quadra.isAvailable) {
       alert(`Reserva realizada para a quadra: ${quadra.name}`);
     } else {
