@@ -13,11 +13,10 @@ function Home() {
     lng: -46.6333,
   };
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [mapCenter, setMapCenter] = useState(center);
   const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
   const [quadras, setQuadras] = useState<{ name: string; address: string; isAvailable: boolean }[]>([]); 
-  const [setOcupadas] = useState<string[]>([]); 
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyAXTst__t08nB_p-NVmKsjSd-yIXh2Z33Y',
@@ -42,7 +41,7 @@ function Home() {
     const request = {
       query: searchTerm,
       location: mapCenter,
-      radius: 1000,
+      radius: 1000, // Alterado para um número
     };
 
     service.textSearch(request, (results, status) => {
@@ -59,8 +58,10 @@ function Home() {
             isAvailable: Math.random() > 0.5,
           };
         }).filter(Boolean); 
-        
-        
+
+        // Atualiza o estado com os lugares encontrados
+        setMarkers(foundPlaces as { lat: number; lng: number }[]);
+        setQuadras(foundPlaces as { name: string; address: string; isAvailable: boolean }[]); // Atualiza as quadras
       } else {
         alert('Nenhuma quadra encontrada.');
       }

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Usuario from '../../models/usuario';
 import './Cadastro.css';
@@ -13,7 +13,7 @@ function Cadastro() {
     email: '',
     senha: '',
   });
-  const [mensagemSucesso, setMensagemSucesso] = useState<string | null>(null); // Novo estado para a mensagem de sucesso
+  const [mensagemSucesso] = useState<string | null>(null); // Novo estado para a mensagem de sucesso
 
   function back() {
     navigate('/login');

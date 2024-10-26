@@ -37,7 +37,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       localStorage.setItem('token', response.data.token);
     } catch (err) {
       console.error("Erro ao fazer login:", err);
-      setError(err.response?.data?.message || 'Erro ao realizar o login.');
     } finally {
       setIsLoading(false);
     }

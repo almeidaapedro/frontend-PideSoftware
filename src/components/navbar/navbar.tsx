@@ -1,5 +1,5 @@
-import { ReactNode, useContext, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link, To, useNavigate } from "react-router-dom";
 import "./navbar.css";
 
 function Navbar() {
@@ -14,7 +14,7 @@ function Navbar() {
     setIsMenuOpen(false);
   };
 
-  const handleLinkClick = (path) => {
+  const handleLinkClick = (path: To) => {
     navigate(path);
     closeMenu(); // Fecha o menu ao clicar em um link
   };
