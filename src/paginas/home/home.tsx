@@ -1,14 +1,6 @@
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import { useState, useEffect } from 'react';
 
-type Quadra = {
-  lat: number;
-  lng: number;
-  name: string;
-  address: string;
-  isAvailable: boolean;
-};
-
 function Home() {
   const mapContainerStyle = {
     width: '100%',
@@ -24,7 +16,7 @@ function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [mapCenter, setMapCenter] = useState(center);
   const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
-  const [quadras, setQuadras] = useState<Quadra[]>([]); 
+  const [quadras, setQuadras] = useState<{ name: string; address: string; isAvailable: boolean }[]>([]); 
   const [ocupadas, setOcupadas] = useState<string[]>([]); 
 
   const { isLoaded } = useJsApiLoader({
@@ -55,11 +47,11 @@ function Home() {
 
     service.textSearch(request, (results, status) => {
       if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        const foundPlaces: Quadra[] = results.map((place) => ({
-          lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng(),
-          name: place.name,
-          address: place.formatted_address,
+        const foundPlaces = results.map((place) => ({
+          lat: place.geometry?.location?.lat() ?? 0, // Garantindo que não seja undefined
+          lng: place.geometry?.location?.lng() ?? 0, // Garantindo que não seja undefined
+          name: place.name || 'Desconhecido',
+          address: place.formatted_address || 'Endereço desconhecido',
           isAvailable: Math.random() > 0.5,
         }));
 
@@ -77,7 +69,7 @@ function Home() {
     });
   };
 
-  const handleReserve = (quadra: Quadra) => {
+  const handleReserve = (quadra: { name: string; isAvailable: boolean }) => {
     if (quadra.isAvailable) {
       alert(`Reserva realizada para a quadra: ${quadra.name}`);
     } else {
