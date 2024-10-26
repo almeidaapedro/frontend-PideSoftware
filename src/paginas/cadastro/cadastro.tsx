@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Usuario from '../../models/usuario';
-import './Cadastro.css';
+import './cadastro.css'
 import axios from 'axios';
 
 function Cadastro() {
