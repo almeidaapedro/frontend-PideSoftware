@@ -2,7 +2,7 @@ import axios from "../../node_modules/axios/index"
 
 
 const api = axios.create({
-    baseURL: 'https://sportmap.onrender.com',
+    baseURL: import.meta.env.VITE_API_URL,
     headers: {
         'Content-Type': 'application/json',
     },
