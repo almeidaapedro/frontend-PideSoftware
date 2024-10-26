@@ -29,10 +29,10 @@ const pessoas: pessoa[] = [
     github: "https://github.com/DiegoRodrigues999",
   },
   {
-    foto: "",
+    foto: "https://ik.imagekit.io/u1yytyqy3/WhatsApp%20Image%202024-10-25%20at%2013.51.37.jpeg?updatedAt=1729904959134",
     nome: "Diogo Costa",
     email: "mailto: diogo.costa23@outlook.com",
-    linkedIn: "",
+    linkedIn: "https://www.linkedin.com/in/diogo-costa-132111227/",
     github: "https://github.com/dcn99",
   },
   {
@@ -40,7 +40,7 @@ const pessoas: pessoa[] = [
     nome: "Lucas Reis",
     email: "mailto: lucasreis1601@gmail.com",
     linkedIn: "https://www.linkedin.com/in/lucas-reis-59b20a253/",
-    github: "",
+    github: "https://github.com/luskaCarvalho",
   },
 ];
 
