@@ -7,7 +7,7 @@ import { useAuth } from '../../contexts/authContext';
 
 function Login() {
   const navigate = useNavigate();
-  const { usuario, handleLogin, isLoading, error } = useAuth();
+  const { usuario, handleLogin, isLoading, error }: AuthContextType = useAuth();
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
     email: '',
     senha: '',

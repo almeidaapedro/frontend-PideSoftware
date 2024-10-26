@@ -17,7 +17,7 @@ function Home() {
   const [mapCenter, setMapCenter] = useState(center);
   const [markers, setMarkers] = useState<{ lat: number; lng: number }[]>([]);
   const [quadras, setQuadras] = useState<{ name: string; address: string; isAvailable: boolean }[]>([]); 
-  const [ocupadas, setOcupadas] = useState<string[]>([]); 
+  const [setOcupadas] = useState<string[]>([]); 
 
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: 'AIzaSyAXTst__t08nB_p-NVmKsjSd-yIXh2Z33Y',
@@ -42,27 +42,25 @@ function Home() {
     const request = {
       query: searchTerm,
       location: mapCenter,
-      radius: '1000',
+      radius: 1000,
     };
 
     service.textSearch(request, (results, status) => {
-      if (status === window.google.maps.places.PlacesServiceStatus.OK) {
-        const foundPlaces = results.map((place) => ({
-          lat: place.geometry?.location?.lat() ?? 0, // Garantindo que não seja undefined
-          lng: place.geometry?.location?.lng() ?? 0, // Garantindo que não seja undefined
-          name: place.name || 'Desconhecido',
-          address: place.formatted_address || 'Endereço desconhecido',
-          isAvailable: Math.random() > 0.5,
-        }));
-
-        const quadrasOcupadas = foundPlaces
-          .filter(quadra => quadra.name.includes('Quadra Ocupada'))
-          .map(quadra => quadra.name);
-        setOcupadas(quadrasOcupadas);
-
-        setMarkers(foundPlaces.map((place) => ({ lat: place.lat, lng: place.lng })));
-        setMapCenter(foundPlaces[0]);
-        setQuadras(foundPlaces);
+      if (status === window.google.maps.places.PlacesServiceStatus.OK && results) {
+        const foundPlaces = results.map((place) => {
+          if (!place.geometry || !place.geometry.location) {
+            return null; // Ou tratar de outra forma
+          }
+          return {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng(),
+            name: place.name,
+            address: place.formatted_address,
+            isAvailable: Math.random() > 0.5,
+          };
+        }).filter(Boolean); 
+        
+        
       } else {
         alert('Nenhuma quadra encontrada.');
       }
