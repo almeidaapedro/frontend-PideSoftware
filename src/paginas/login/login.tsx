@@ -76,7 +76,7 @@ function Login() {
           {isLoading ? (
             <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
           ) : (
-            <Link><span>Entrar</span></Link>
+            <Link to='/home'><span>Entrar</span></Link>
           )}
         </button>
         <hr className="border-slate-800 w-full" />
