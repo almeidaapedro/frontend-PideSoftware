@@ -29,6 +29,7 @@ function Navbar() {
         <div className='hidden md:flex gap-5 justify-center flex-grow'>
           <Link to='/home' className='hover:underline'>Início</Link>
           <Link to='/contato' className='hover:underline'>Contato</Link>
+          <Link to='/proprietario' className='hover:underline'>Perfil do Proprietário</Link>
         </div>
 
         <div className='hidden md:flex gap-4'>

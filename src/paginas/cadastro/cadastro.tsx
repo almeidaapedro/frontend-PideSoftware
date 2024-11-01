@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Usuario from '../../models/usuario';
-import './cadastro.css'
+import './cadastro.css';
 import axios from 'axios';
 
 function Cadastro() {
@@ -12,8 +12,9 @@ function Cadastro() {
     nome: '',
     email: '',
     senha: '',
+    tipo: 'usuario', // Adicionei o tipo de usuário aqui
   });
-  const [mensagemSucesso] = useState<string | null>(null); // Novo estado para a mensagem de sucesso
+  const [mensagemSucesso] = useState<string | null>(null); 
 
   function back() {
     navigate('/login');
@@ -23,7 +24,7 @@ function Cadastro() {
     setConfirmaSenha(e.target.value);
   }
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+  function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
     setUsuario({
       ...usuario,
       [e.target.name]: e.target.value
@@ -41,9 +42,9 @@ function Cadastro() {
         );
 
         console.log('Usuário cadastrado com sucesso:', response.data);
-        alert('Usuário cadastrado com sucesso!'); // Define a mensagem de sucesso
+        alert('Usuário cadastrado com sucesso!'); 
         setTimeout(() => {
-          back(); // Redireciona após 2 segundos
+          back(); 
         }, 2000);
       } catch (error) {
         console.error('Erro ao cadastrar usuário:', error);
@@ -62,7 +63,8 @@ function Cadastro() {
         <div className="fundoCadastro hidden lg:block"></div>
         <form className='flex justify-center place-items-center flex-col w-2/3 gap-3 mt-12' onSubmit={cadastrarNovoUsuario}>
           <h2 className='text-black text-5xl'>Cadastrar</h2>
-          {mensagemSucesso && <p className="text-green-500">{mensagemSucesso}</p>} {/* Exibe a mensagem de sucesso */}
+          {mensagemSucesso && <p className="text-green-500">{mensagemSucesso}</p>} 
+          
           <div className="flex flex-col w-full">
             <label htmlFor="nome">Nome</label>
             <input
@@ -111,6 +113,22 @@ function Cadastro() {
               onChange={handleConfirmarSenha}
             />
           </div>
+          
+          {/* Campo de seleção para o tipo de usuário */}
+          <div className="flex flex-col w-full">
+            <label htmlFor="tipo">Tipo de Usuário</label>
+            <select
+              id="tipo"
+              name="tipo"
+              className="border-2 border-slate-700 rounded-full p-2"
+              value={usuario.tipo}
+              onChange={atualizarEstado}
+            >
+              <option value="usuario">Usuário</option>
+              <option value="proprietario">Proprietário</option>
+            </select>
+          </div>
+
           <div className="flex justify-around w-full gap-8">
             <button className='rounded text-white bg-red-600 hover:bg-red-900 w-1/2 py-2' onClick={back}>
               Cancelar

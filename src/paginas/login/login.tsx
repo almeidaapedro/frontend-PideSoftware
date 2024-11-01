@@ -2,12 +2,11 @@ import { useState, useEffect, ChangeEvent, FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UsuarioLogin from '../../models/usuarioLogin';
 import './login.css';
-import { RotatingLines } from 'react-loader-spinner';
 import { useAuth } from '../../contexts/authContext';
 
 function Login() {
   const navigate = useNavigate();
-  const { usuario, handleLogin, isLoading, error } = useAuth();
+  const { usuario, handleLogin, error } = useAuth();
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>({
     email: '',
     senha: '',
@@ -44,7 +43,7 @@ function Login() {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-screen place-items-center font-bold">
       <form className="flex justify-center items-center flex-col w-1/2 gap-4" onSubmit={login}>
-        <h2 className="text-slate-900 text-5xl">Entrar</h2>
+        <h2 className="text-slate-900 text-5xl">Login</h2>
         <div className="flex flex-col w-full">
           <label htmlFor="usuario">E-mail</label>
           <input
@@ -73,11 +72,7 @@ function Login() {
         </div>
         {isError && <p className="text-red-500">{String(error)}</p>}
         <button type="submit" className="rounded bg-custom-dark-blue hover:bg-indigo-900 text-white w-1/2 py-2 flex justify-center">
-          {isLoading ? (
-            <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} />
-          ) : (
-            <Link to='/home'><span>Entrar</span></Link>
-          )}
+          <Link to='/home'><span>Entrar</span></Link>
         </button>
         <hr className="border-slate-800 w-full" />
         <p>

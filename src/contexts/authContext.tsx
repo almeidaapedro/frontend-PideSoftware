@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     console.log("Credenciais do usuário:", usuarioLogin);
 
     try {
-      const response = await api.post('/usuarios/logar', usuarioLogin, {
+      const response = await api.post('https://sportmap.onrender.com/usuarios/logar', usuarioLogin, {
         headers: { 'Content-Type': 'application/json' }
       });
       setUsuario(response.data);
