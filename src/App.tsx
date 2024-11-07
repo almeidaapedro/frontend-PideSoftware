@@ -9,7 +9,7 @@ import Cadastro from './paginas/cadastro/cadastro'
 
 import Home from './paginas/home/home'
 import Login from './paginas/login/login'
-import TelaProprietario from './paginas/proprietario/telaProprietario'
+
 
 
 
@@ -28,7 +28,7 @@ function App() {
             <Route path='/home' element={<Home />} />
             <Route path='/cadastro' element={<Cadastro />} />
             <Route path="/contato" element={<Contato />} />
-            <Route path="/proprietario" element={<TelaProprietario />} />
+            {/* <Route path="/proprietario" element={<TelaProprietario />} /> */}
           </Routes>
           </div>
           <Footer />

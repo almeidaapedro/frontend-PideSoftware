@@ -30,9 +30,7 @@ function Navbar() {
         <div className='hidden md:flex gap-5 justify-center flex-grow'>
           <Link to='/home' className='hover:underline'>Início</Link>
           <Link to='/contato' className='hover:underline'>Contato</Link>
-          {isProprietario && (
-            <Link to='/proprietario' className='hover:underline'>Perfil do Proprietário</Link>
-          )}
+          
         </div>
 
         <div className='hidden md:flex gap-4'>
@@ -55,9 +53,7 @@ function Navbar() {
             <div className='flex flex-col font-bold'>
               <Link to='/home' className='py-2 hover:underline' onClick={() => handleLinkClick('/home')}>Início</Link>
               <Link to='/contato' className='py-2 hover:underline' onClick={() => handleLinkClick('/contato')}>Contato</Link>
-              {isProprietario && (
-                <Link to='/proprietario' className='py-2 hover:underline' onClick={() => handleLinkClick('/proprietario')}>Perfil do Proprietário</Link>
-              )}
+              
               <Link to='/login' className='py-2 hover:underline' onClick={() => handleLinkClick('/login')}>Login</Link>
               <Link to='/cadastro' className='py-2 hover:underline' onClick={() => handleLinkClick('/cadastro')}>Cadastre-se</Link>
             </div>
