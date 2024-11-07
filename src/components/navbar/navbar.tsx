@@ -4,7 +4,7 @@ import "./navbar.css";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProprietario] = useState(true); // Defina como true ou false com base no status do usuário
+  const [] = useState(true); // Defina como true ou false com base no status do usuário
   const navigate = useNavigate();
 
   const toggleMenu = () => {
